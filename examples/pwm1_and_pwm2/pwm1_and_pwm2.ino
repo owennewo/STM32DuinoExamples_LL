@@ -37,13 +37,6 @@ void setup()
   
   timer->resume();
 
-  
-  LL_TIM_COUNTERMODE_UP
-  LL_TIM_COUNTERMODE_DOWN
-  LL_TIM_COUNTERMODE_CENTER_UP_DOWN
-  LL_TIM_COUNTERMODE_CENTER_DOWN
-  LL_TIM_GetR
-  LL_TIM_CC
 }
 
 void loop()
