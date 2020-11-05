@@ -4,6 +4,11 @@ Timers can seem a bit intimidating.  These examples aim to show some of the stm3
 
 As mentioned on main README these LL_* macros are not always supported on all boards and quite often are only possible on certain timers (e.g. on my `stm32g431` board I can do dead time on TIM1 but not TIM4)
 
+## Example 1 - the basics PWM1 and PWM2
+OK - so this doesn't use the low level library! But it's a good place to start:
+[![Watch the video](./gifs/part1.png)](https://youtu.be/9h7-uHxL_jg)
+
+
 ## countermode
 The default counter mode is `up`.  This means that the counter will typically start at zero and countup until it hits your overflow value and reset to zero and resume counting.  Each of your timer channels have a change register value that might cause a gpio pin to go high/low or for an interrups (callback) to fire.
 There are other countermodes that are commonly used but require LL_TIM macros/registers:
