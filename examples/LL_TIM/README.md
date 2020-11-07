@@ -4,13 +4,16 @@ Timers can seem a bit intimidating.  These examples aim to show some of the stm3
 
 As mentioned on main README these LL_* macros are not always supported on all boards and quite often are only possible on certain timers (e.g. on my `stm32g431` board I can do dead time on TIM1 but not TIM4)
 
-## Example 1 - the basics PWM1 and PWM2
+## Tutorial Part 1 - the basics PWM1 and PWM2
 OK - so this doesn't use the low level library! But it's a good place to start:
-[![Watch the video](./gifs/part1.png)](https://youtu.be/9h7-uHxL_jg)
+[![Watch the video](./gifs/stm32duino-timers-part1-small.png)](https://youtu.be/9h7-uHxL_jg) 
+By default `Arduino APIs` will be using `LL_TIM_OCMODE_PWM` - this basically will make the gpio go from low to high at the timer channels change count.  What happens if you want it to go from high to low?  You should use `LL_TIM_OCMODE_PWM2`.  A typical application for this is where you have 2 pins which you want to do PWM on but one must be off when the other is on.  Each pin would need to be on the same timer but use different channels.
 
+Note, perhaps a better way to do this is using complementary channels (`CH1 CH1N`) where multiple gpios are managed on the same channel.
 
-## countermode
+## Tutorial Part 2 - Countermode
 The default counter mode is `up`.  This means that the counter will typically start at zero and countup until it hits your overflow value and reset to zero and resume counting.  Each of your timer channels have a change register value that might cause a gpio pin to go high/low or for an interrups (callback) to fire.
+[![Watch the video](./gifs/stm32duino-timers-part1-small.png)](https://youtu.be/0q-ugiRPM1E)
 There are other countermodes that are commonly used but require LL_TIM macros/registers:
   - LL_TIM_COUNTERMODE_UP
   - LL_TIM_COUNTERMODE_DOWN
@@ -19,11 +22,6 @@ There are other countermodes that are commonly used but require LL_TIM macros/re
   - LL_TIM_COUNTERMODE_CENTER_UP
 
 You may also wish to change the repition counter using LL_TIM_SetRepetitionCounter.  This can be used to control how often an `update event` occurs.  e.g. if you set it to 1 then it'll skip one `update event` and the timer scoped interrupt will fire every other counter reset.  You might use a value of 1 for an updown counter where you only want an update event on an `underflow` reset (after down) not at `overflow` (after up).
-
-## PWM2
-By default `Arduino APIs` will be using `LL_TIM_OCMODE_PWM` - this basically will make the gpio go from low to high at the timer channels change count.  What happens if you want it to go from high to low?  You should use `LL_TIM_OCMODE_PWM2`.  A typical application for this is where you have 2 pins which you want to do PWM on but one must be off when the other is on.  Each pin would need to be on the same timer but use different channels.
-
-Note, perhaps a better way to do this is using complementary channels (`CH1 CH1N`) where multiple gpios are managed on the same channel.
 
 ## Complementary channels CH1 CH1N and dead time
 I'm still not 100% sure I understand complementaty channels and timers but I have an example that works for me!  
