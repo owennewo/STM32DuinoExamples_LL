@@ -6,14 +6,18 @@ As mentioned on main README these LL_* macros are not always supported on all bo
 
 ## Tutorial Part 1 - the basics PWM1 and PWM2
 OK - so this doesn't use the low level library! But it's a good place to start:
+
 [![Watch the video](./gifs/stm32duino-timers-part1-small.png)](https://youtu.be/9h7-uHxL_jg) 
+
 By default `Arduino APIs` will be using `LL_TIM_OCMODE_PWM` - this basically will make the gpio go from low to high at the timer channels change count.  What happens if you want it to go from high to low?  You should use `LL_TIM_OCMODE_PWM2`.  A typical application for this is where you have 2 pins which you want to do PWM on but one must be off when the other is on.  Each pin would need to be on the same timer but use different channels.
 
 Note, perhaps a better way to do this is using complementary channels (`CH1 CH1N`) where multiple gpios are managed on the same channel.
 
 ## Tutorial Part 2 - Countermode
 The default counter mode is `up`.  This means that the counter will typically start at zero and countup until it hits your overflow value and reset to zero and resume counting.  Each of your timer channels have a change register value that might cause a gpio pin to go high/low or for an interrups (callback) to fire.
+
 [![Watch the video](./gifs/stm32duino-timers-part1-small.png)](https://youtu.be/0q-ugiRPM1E)
+
 There are other countermodes that are commonly used but require LL_TIM macros/registers:
   - LL_TIM_COUNTERMODE_UP
   - LL_TIM_COUNTERMODE_DOWN
