@@ -17,6 +17,7 @@ void setup()
   LL_TIM_OC_SetDeadTime(timer->getHandle()->Instance, dead_time);
   LL_TIM_CC_EnableChannel(timer->getHandle()->Instance, LL_TIM_CHANNEL_CH1 | LL_TIM_CHANNEL_CH1N);
   timer->resume();
+}
 
 void loop()
 {
