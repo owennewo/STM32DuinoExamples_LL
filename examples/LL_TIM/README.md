@@ -16,7 +16,7 @@ Note, perhaps a better way to do this is using complementary channels (`CH1 CH1N
 ## Tutorial Part 2 - Countermode
 The default counter mode is `up`.  This means that the counter will typically start at zero and countup until it hits your overflow value and reset to zero and resume counting.  Each of your timer channels have a change register value that might cause a gpio pin to go high/low or for an interrups (callback) to fire.
 
-[![Watch the video](./gifs/stm32duino-timers-part1-small.png)](https://youtu.be/0q-ugiRPM1E)
+[![Watch the video](./gifs/stm32duino-timers-part2-small.png)](https://youtu.be/0q-ugiRPM1E)
 
 There are other countermodes that are commonly used but require LL_TIM macros/registers:
   - LL_TIM_COUNTERMODE_UP
@@ -28,7 +28,8 @@ There are other countermodes that are commonly used but require LL_TIM macros/re
 You may also wish to change the repition counter using LL_TIM_SetRepetitionCounter.  This can be used to control how often an `update event` occurs.  e.g. if you set it to 1 then it'll skip one `update event` and the timer scoped interrupt will fire every other counter reset.  You might use a value of 1 for an updown counter where you only want an update event on an `underflow` reset (after down) not at `overflow` (after up).
 
 ## Complementary channels CH1 CH1N and dead time
-I'm still not 100% sure I understand complementaty channels and timers but I have an example that works for me!  
+I'm still not 100% sure I understand complementaty channels and timers but I have an example that works for me! 
+[![Watch the video](./gifs/stm32duino-timers-part2-small.png)](https://youtu.be/HOCXhLaX4Kk)
 
 So I'm wanting two pins that are the opposite of each other and with deadtime in between so that only one is ever on.  I did this by enabling the CH1N channel and setting the deadtime
 ```
