@@ -1,5 +1,7 @@
 #include <Arduino.h>
 
+// WATCH VIDEO: https://youtu.be/HOCXhLaX4Kk
+
 HardwareTimer *timer;
 int duty = 50;
 

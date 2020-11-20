@@ -1,6 +1,8 @@
 #include <Arduino.h>
 // Example uses the disco_f407vg which has 4 LEDs
 
+// WATCH VIDEO: https://youtu.be/9h7-uHxL_jg
+
 void setup()
 {
 

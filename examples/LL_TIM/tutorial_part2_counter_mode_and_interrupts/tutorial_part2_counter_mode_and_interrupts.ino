@@ -15,12 +15,7 @@
   _ — ‾ ‾ — _ | _ — ‾ ‾ — _ |
 */
 
-/*
-*/
-
-#if !defined(STM32_CORE_VERSION) || (STM32_CORE_VERSION < 0x01090000)
-#error "Due to API change, this sketch is compatible with STM32_CORE_VERSION  >= 0x01090000"
-#endif
+// WATCH VIDEO:  https://youtu.be/0q-ugiRPM1E
 
 // Change Serial1 pins or use Serial (if available)
 #define TX PB3
