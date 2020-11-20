@@ -29,7 +29,7 @@ You may also wish to change the repition counter using LL_TIM_SetRepetitionCount
 
 ## Complementary channels CH1 CH1N and dead time
 I'm still not 100% sure I understand complementaty channels and timers but I have an example that works for me! 
-[![Watch the video](./gifs/stm32duino-timers-part2-small.png)](https://youtu.be/HOCXhLaX4Kk)
+[![Watch the video](./gifs/stm32duino-timers-part3-small.jpg)](https://youtu.be/HOCXhLaX4Kk)
 
 So I'm wanting two pins that are the opposite of each other and with deadtime in between so that only one is ever on.  I did this by enabling the CH1N channel and setting the deadtime
 ```
